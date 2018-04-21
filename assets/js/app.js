@@ -40,18 +40,25 @@ database.ref().on('child_added', function(childSnapshot){
   let snapName = childSnapshot.val().name;
   let snapRole = childSnapshot.val().role;
   let snapStartDate = childSnapshot.val().startDate;
+  let currentDate = moment().format('YYYY-MM-DD');
+  let monthsWorked = moment(currentDate).diff(snapStartDate, 'months');
   let snapMonthlyRate = childSnapshot.val().monthlyRate;
-  let currentDate = new Date();
+  let billableHours = (monthsWorked * snapMonthlyRate);
+  console.log(snapStartDate);
   console.log(currentDate);
+  console.log(monthsWorked)
   
   let newRow = $('<tr>')
 
   let nameCell = $('<td class="employee-name">').text(snapName)
   let roleCell = $('<td class="employee-role">').text(snapRole)
   let startCell = $('<td class="employee-start-date">').text(snapStartDate)
+  let workedCell = $('<td class="employee-months-worked">').text(monthsWorked)
   let rateCell = $('<td class="employee-monthly-rate">').text(snapMonthlyRate)
+  let billableCell = $('<td class="employee-billable-hours">').text(billableHours)
+
   
-  newRow.append(nameCell).append(roleCell).append(startCell).append(rateCell)
+  newRow.append(nameCell).append(roleCell).append(startCell).append(workedCell).append(rateCell).append(billableHours)
   $('#current-employees').append(newRow);
 
   
