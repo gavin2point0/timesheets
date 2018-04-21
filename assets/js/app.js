@@ -44,9 +44,6 @@ database.ref().on('child_added', function(childSnapshot){
   let monthsWorked = moment(currentDate).diff(snapStartDate, 'months');
   let snapMonthlyRate = childSnapshot.val().monthlyRate;
   let billableHours = (monthsWorked * snapMonthlyRate);
-  console.log(snapStartDate);
-  console.log(currentDate);
-  console.log(monthsWorked)
   
   let newRow = $('<tr>')
 
