@@ -15,3 +15,21 @@
   var Role;
   var startDate;
   var monthlyRate;
+
+  $('#submit').on('click', function() {
+    event.preventDefault();
+
+    employeeName = $('#name').val().trim();
+    employeeRole = $('#role').val().trim();
+    employeeStartDate = $('#start-date').val().trim();
+    employeeMonthlyRate = $('#monthly-rate').val().trim();
+
+    database.rel().push({
+        name: employeeName,
+        role: employeeRole,
+        startDate: employeeStartDate,
+        monthlyRate: employeMonthlyRate
+    })
+
+
+  })
