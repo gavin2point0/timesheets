@@ -9,3 +9,9 @@
   };
   firebase.initializeApp(config);
   
+  var database = firebase.database();
+
+  var Name;
+  var Role;
+  var startDate;
+  var monthlyRate;
