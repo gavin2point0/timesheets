@@ -1,11 +1,11 @@
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyB8wocc44m8SPDLmqkzbLYKqp6Q-hDTGI0",
-    authDomain: "timesheets-demo.firebaseapp.com",
-    databaseURL: "https://timesheets-demo.firebaseio.com",
-    projectId: "timesheets-demo",
-    storageBucket: "",
-    messagingSenderId: "983750965131"
+    apiKey: "AIzaSyCW_UIOp2bU3yw7ZJdU6KxzzGDj9LNKwNU",
+    authDomain: "classpractice-22c2d.firebaseapp.com",
+    databaseURL: "https://classpractice-22c2d.firebaseio.com",
+    projectId: "classpractice-22c2d",
+    storageBucket: "classpractice-22c2d.appspot.com",
+    messagingSenderId: "137209385054"
   };
   firebase.initializeApp(config);
   
@@ -16,19 +16,24 @@
   var startDate;
   var monthlyRate;
 
-  $('#submit').on('click', function() {
+  $('#add-user').on('click', function() {
     event.preventDefault();
 
-    employeeName = $('#name').val().trim();
-    employeeRole = $('#role').val().trim();
-    employeeStartDate = $('#start-date').val().trim();
-    employeeMonthlyRate = $('#monthly-rate').val().trim();
+    employeeName = $('#name-input').val().trim();
+    employeeRole = $('#role-input').val().trim();
+    employeeStartDate = $('#date-input').val().trim();
+    employeeMonthlyRate = $('#rate-input').val().trim();
 
-    database.rel().push({
+    $('#name-input').val('');
+    $('#role-input').val('');
+    $('#date-input').val('');
+    $('#rate-input').val('');
+
+    database.ref().push({
         name: employeeName,
         role: employeeRole,
         startDate: employeeStartDate,
-        monthlyRate: employeMonthlyRate
+        monthlyRate: employeeMonthlyRate
     })
 
 
